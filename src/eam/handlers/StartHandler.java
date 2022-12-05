@@ -41,6 +41,7 @@ import eam.listener.ui.PerspectiveLister;
 import eam.listener.ui.WindowListener;
 import eam.utils.date.CurrentDate;
 import eam.utils.http.UploadData;
+import eam.utils.common.ActionCategory;
 import eam.utils.console.PrintConsoleMessage;;
 
 /**
@@ -94,7 +95,7 @@ public class StartHandler extends AbstractHandler {
 			if (!StartHandler.isStart) {
 				UploadData request = new UploadData();
 				if (UploadData.isConfigFile) {
-					if (request.doPost("Eclipse-Start", "开始监控", startDate) == null) {
+					if (request.doPost(ActionCategory.START_MONITOR.getCategory(), "开始监控", startDate) == null) {
 						printConsoleMessage.printMessage("启动监控失败");
 					} else {
 						StartHandler.isStart = true;
